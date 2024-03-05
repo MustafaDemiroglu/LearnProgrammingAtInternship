@@ -7,10 +7,12 @@ const paragraphs = (
 );
 
 // but this will not work
+/*
 const paragraphs2 = (
     <p>I am a paragraph.</p> 
     <p>I, too, am a paragraph.</p>
 );
+*/
 
 const blog = (
     <div> 
