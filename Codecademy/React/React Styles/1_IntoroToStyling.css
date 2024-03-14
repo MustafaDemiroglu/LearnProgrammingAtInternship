@@ -1,0 +1,43 @@
+.btn {
+    height: 45px;
+    width: 110px;
+    border: none;
+    color: #52796f;
+    cursor: pointer;
+    font-size: 16px;
+    align-self: right;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    background: #ccd5ae;
+  }
+  
+  .btn:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  }
+  
+  .menuWrapper {
+    width: 500px;
+    height: 300px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .menuTop {
+      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      color: #354f52;
+      border-radius: 25px 25px 0px 0px;
+      padding: 20px;
+      background: url('https://images.unsplash.com/photo-1523350165414-082d792c4bcc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80');
+      background-position-x: center;
+  background-position-y: center;
+  }
+  
+  .menuBottom {
+      color: #52796f;
+      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      background-color: whitesmoke;
+      border-radius: 0px 0px 25px 25px;
+      padding: 20px;
+  }
+  
