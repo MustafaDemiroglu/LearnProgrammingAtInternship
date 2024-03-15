@@ -1,0 +1,15 @@
+h1 {
+    color: yellow; /* Keyword */
+}
+
+h2 {
+    color: #8cbc8f; /* Hex Code */  
+}
+
+h3 {
+    color: rgb(23, 45, 23); /* RGB */
+}
+
+h4 {
+    color: hsla(34, 100%, 50%, 0,1); /* HSLA */
+}
