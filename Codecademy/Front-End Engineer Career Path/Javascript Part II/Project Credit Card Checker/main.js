@@ -24,11 +24,57 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 
 // Add your functions below:
+function validateCred(array) {
+  const digits = array.slice();
+  for(let i=digits.length-2 ; i>=0 ; i-=2) {
+    let doubledDigit = digits[i]*2;
+    if(doubledDigit > 9) {
+      doubledDigit -=9;
+    }
+    digits[i] = doubledDigit;
+  }
+  const sum = digits.reduce((acc, curr) => acc + curr, 0);
+  return sum %10 === 0;
+}
 
+function findInvalidCards(cardnumbers) {
+  const invalidCards = [];
+  for(const card of cardNumbers) {
+    if(!validateCred(card)) {
+      invalidCards.push(card);
+    }
+  }
+  return invalidCards;
+}
 
-
-
-
-
-
-
+function idInvalidCardcompanies(invalidCards) {
+  const companies = [];
+  for (let i = 0; i < invalidCards.length; i++) {
+    let firstDigit = invalidCards[i][0];
+    switch (firstDigit) {
+      case 3:
+        if (!companies.includes("Amex")) {
+          companies.push("Amex");
+        }
+        break;
+      case 4:
+        if (!companies.includes("Visa")) {
+          companies.push("Visa");
+        }
+        break;
+      case 5:
+        if (!companies.includes("Mastercard")) {
+          companies.push("Mastercard");
+        }
+        break;
+      case 6:
+        if (!companies.includes("Discover")) {
+          companies.push("Discover");
+        }
+        break;
+      default:
+        console.log("Company not found");
+    }
+  }
+  return companies;
+}
