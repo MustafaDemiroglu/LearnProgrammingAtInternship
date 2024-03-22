@@ -85,11 +85,7 @@ const returnRandBase = () => {
           }
         }
         let percentage = (pos / this.dna.length) * 100
-        if (percentage >= 60){
-          console.log('true');
-        } else {
-          console.log('false');
-        } 
+        return percentage >= 60;
       }
     }
   }
@@ -97,9 +93,9 @@ const returnRandBase = () => {
   // Array zum Speichern der überlebensfähigen Instanzen
   let survivingInstances = [];
   // Schleife, um 30 Instanzen zu erstellen
-  while (survivingInstances.length < 30) {
+  for (let i = 0 ;survivingInstances.length < 30 ; i++) {
     // Erstellen einer neuen Instanz von pAequor mit pAequorFactory
-    let newOrganism = pAequorFactory(survivingInstances.length + 1, mockUpStrand());
+    let newOrganism = pAequorFactory(i + 1, mockUpStrand());
     // Überprüfen, ob die Instanz wahrscheinlich überleben kann
     if (newOrganism.willLikelySurvive()) {
       // Wenn ja, fügen Sie sie dem Array der überlebenden Instanzen hinzu
