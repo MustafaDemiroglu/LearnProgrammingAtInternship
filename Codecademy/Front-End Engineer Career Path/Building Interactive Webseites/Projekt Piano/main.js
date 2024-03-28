@@ -11,14 +11,12 @@ function keyPlay(event) {
 }
 
 function keyReturn(event) { 
-  event.target.style.backgroundColor='';
+  event.target.style.backgroundColor = '';
 }
 // Write a named function with event handler properties
 function assignEventHandlers(note) {
-    keys.forEach(function(key) {
-        key.addEventListener('mousedown', keyPlay);
-        key.addEventListener('mouseup', keyReturn);
-    });
+  note.addEventListener('mousedown', keyPlay);
+  note.addEventListener('mouseup', keyReturn);
 }
 
 // Write a loop that runs the array elements through the function
