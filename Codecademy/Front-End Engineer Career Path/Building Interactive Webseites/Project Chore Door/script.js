@@ -32,7 +32,7 @@ const isBot = (door) => {
   return false;
 }
 
-cconst gameOver = (status) => {
+const gameOver = (status) => {
   if(status === 'win') {
     startButton.innerHTML = 'You win! Play again?';
   } else {
