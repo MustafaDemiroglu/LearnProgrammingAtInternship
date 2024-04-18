@@ -41,6 +41,23 @@ const gameOver = (status) => {
   currentlyPlaying = false;
 }
 
+const playDoor = (door) => {
+  numClosedDoors-- ;
+  if(numClosedDoors === 0) {
+    gameOver(win);
+  }
+  if(isBot(door)) {
+    gameOver();
+  }
+}
+
+const randomChoreDoorGenerator() { 
+  let choreDoor = Math.floor(Math.random() * numClosedDoors);
+  if(choreDoor === 0){ 
+    
+  }
+}
+
 doorImage1.onclick = () => {
   if (currentlyPlaying && isClicked(doorImage1)) {
     doorImage1.src = openDoor1;
