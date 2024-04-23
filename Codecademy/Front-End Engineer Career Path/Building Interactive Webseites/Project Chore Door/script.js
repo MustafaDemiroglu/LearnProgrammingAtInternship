@@ -18,27 +18,54 @@ let currentlyPlaying = true;
 
 // Define game logic to check doors, progress game, end game, and choose a random chore door
 
-const isClicked = (door) => {
-  if(door.src == 'closedDoorPath') {
+cconst isClicked = (door) => {
+  if (door.src === closedDoorPath) {
     return true;
   }
   return false;
 }
 
 const isBot = (door) => {
-  if(door.src == 'botDoorPath') {
+  if (door.src === botDoorPath) {
     return true;
   }
   return false;
 }
 
 const gameOver = (status) => {
-  if(status === 'win') {
+  if (status === 'win') {
     startButton.innerHTML = 'You win! Play again?';
   } else {
     startButton.innerHTML = 'Game over! Play again?';
   }
   currentlyPlaying = false;
+}
+
+const playDoor = (door) => {
+  numClosedDoors--;
+  if (numClosedDoors === 0) {
+    gameOver('win');
+  }
+  if (isBot(door)) {
+    gameOver('lose');
+  }
+}
+
+const randomChoreDoorGenerator = () => { 
+  let choreDoor = Math.floor(Math.random() * numClosedDoors);
+  if (choreDoor === 0){ 
+    openDoor1 = botDoorPath;
+    openDoor2 = beachDoorPath;
+    openDoor3 = spaceDoorPath;
+  } else if (choreDoor === 1) {
+    openDoor1 = beachDoorPath;
+    openDoor2 = botDoorPath;
+    openDoor3 = spaceDoorPath;
+  } else {
+    openDoor1 = beachDoorPath;
+    openDoor2 = spaceDoorPath;
+    openDoor3 = botDoorPath;
+  }
 }
 
 doorImage1.onclick = () => {
@@ -69,3 +96,16 @@ startButton.onclick = () => {
 }
 
 // Start a game round
+const startRound = () =>  {
+  numClosedDoors = 3;
+  currentlyPlaying = true;
+  startButton.innerHTML = 'Good Luck!';
+  
+  doorImage1.src = closedDoorPath;
+  doorImage2.src = closedDoorPath;
+  doorImage3.src = closedDoorPath;
+
+  randomChoreDoorGenerator();
+}
+
+startRound();
