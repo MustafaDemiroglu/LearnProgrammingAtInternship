@@ -2,7 +2,7 @@ const source = document.getElementById('ifHelper').innerHTML;
 const template = Handlebars.compile(source);
 
 const context = {
-  opinion: true
+  opinion: false
 };
 
 const compiledHtml = template(context);
