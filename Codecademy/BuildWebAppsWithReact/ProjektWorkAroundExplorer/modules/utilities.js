@@ -1,4 +1,4 @@
-/* modules/utilities.js */
+// modules/utilities.js
 export const formatNumber = number => {
     // Get rid of the decimals and convert to a string.
     let numStr = String(Math.floor(number));
@@ -10,4 +10,5 @@ export const formatNumber = number => {
   
     // And return!
     return numStr;
-  }
+  };
+  

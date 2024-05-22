@@ -1,15 +1,16 @@
-// TODO: Add your import statements here.
+// main.js
+import { getRoles, getCompanies } from './modules/salaryData.js';
+import { getAverageSalaryByRole, getAverageSalaryByCompany, getSalaryAtCompany, getIndustryAverageSalary } from './modules/workAroundModule.js';
 
-// TODO: Get the companies and roles using the salaryData module.
-const companies = [];
-const roles = [];
+// Get the companies and roles using the salaryData module.
+const companies = getCompanies();
+const roles = getRoles();
 
 // Create input buttons for every company and role represented in the data.
 renderInputButtons(companies, 'company');
 renderInputButtons(roles, 'role');
 
-// This function will create a new <section> with radio
-// inputs based on the data provided in the labels array.
+// This function will create a new <section> with radio inputs based on the data provided in the labels array.
 function renderInputButtons(labels, groupName) {
   const container = document.createElement('section');
   container.setAttribute('id', `${groupName}Inputs`);
@@ -18,7 +19,7 @@ function renderInputButtons(labels, groupName) {
   header.innerText = `Select a ${groupName}`;
   container.appendChild(header);
 
-  labels.forEach(label => { // For each label...
+  labels.forEach(label => {
     // Create the radio input element.
     let divElement = document.createElement('div');
     divElement.setAttribute('class', 'option');
@@ -44,19 +45,22 @@ function renderInputButtons(labels, groupName) {
   document.querySelector('main').prepend(container);
 }
 
-function updateResults(){
+function updateResults() {
   // Get the current selected company and role from the radio button inputs.
-  const company = document.querySelector("input[name='company']:checked").value;
-  const role = document.querySelector("input[name='role']:checked").value;
+  const companyInput = document.querySelector("input[name='company']:checked");
+  const roleInput = document.querySelector("input[name='role']:checked");
 
   // If either the company or role is unselected, return.
-  if (!company || !role) { return; }
+  if (!companyInput || !roleInput) { return; }
 
-  // TODO: Use the workAroundModule functions to calculate the needed data.
-  const averageSalaryByRole = 0;
-  const averageSalaryByCompany = 0;
-  const salary = 0;
-  const industryAverageSalary = 0;
+  const company = companyInput.value;
+  const role = roleInput.value;
+
+  // Use the workAroundModule functions to calculate the needed data.
+  const averageSalaryByRole = getAverageSalaryByRole(role);
+  const averageSalaryByCompany = getAverageSalaryByCompany(company);
+  const salary = getSalaryAtCompany(role, company);
+  const industryAverageSalary = getIndustryAverageSalary();
 
   // Render them to the screen.
   document.getElementById('salarySelected').innerText = `The salary for ${role}s at ${company} is \$${salary}`;
@@ -64,6 +68,3 @@ function updateResults(){
   document.getElementById('salaryAverageByCompany').innerText = `The average salary at ${company} is \$${averageSalaryByCompany}`;
   document.getElementById('salaryAverageIndustry').innerText = `The average salary in the Tech industry is \$${industryAverageSalary}`;
 }
-
-
-
