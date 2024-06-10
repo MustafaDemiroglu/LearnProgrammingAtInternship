@@ -29,7 +29,7 @@ const businessData = [
         reviewCount: 90,
     },
     {
-        imageSrc: 'https://via.placeholder.com/300',
+        imageSrc: 'https://www.freepik.com/free-photo/fruit-salad-spilling-floor-was-mess-vibrant-colors-textures-generative-ai_40333662.htm#query=food&position=4&from_view=keyword&track=sph&uuid=4aa4c0b2-c38e-4c46-bc08-336740fdf994',
         name: 'Restaurant A',
         address: '123 Main St',
         city: 'New York',
@@ -60,6 +60,42 @@ const businessData = [
         category: 'Cafe',
         rating: 4.5,
         reviewCount: 90
+    },
+    {
+        id: '1',
+        imageSrc: 'https://via.placeholder.com/150',
+        name: 'Business 1',
+        address: '123 Main St',
+        city: 'Anytown',
+        state: 'CA',
+        zipcode: '90210',
+        category: 'Food',
+        rating: 4.5,
+        reviewCount: 90,
+    },
+    {
+        id: '2',
+        imageSrc: 'https://via.placeholder.com/150',
+        name: 'Business 2',
+        address: '456 Main St',
+        city: 'Anytown',
+        state: 'CA',
+        zipcode: '90210',
+        category: 'Food',
+        rating: 4.2,
+        reviewCount: 70,
+    },
+    {
+        id: '3',
+        imageSrc: 'https://via.placeholder.com/150',
+        name: 'Business 3',
+        address: '789 Main St',
+        city: 'Anytown',
+        state: 'CA',
+        zipcode: '90210',
+        category: 'Food',
+        rating: 4.7,
+        reviewCount: 120,
     }
         // Weitere Geschäfte können hier hinzugefügt werden
 ];

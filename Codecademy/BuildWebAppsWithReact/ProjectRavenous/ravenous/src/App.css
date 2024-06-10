@@ -1,16 +1,21 @@
 .App {
+  font-family: "Work Sans", sans-serif;
+}
+
+.App h1 {
+  padding: 1.66rem 0;
   text-align: center;
+  background-color: #cca353;
+  font-family: Poppins, sans-serif;
+  font-size: 2.33rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -26,10 +31,6 @@
 
 .App-link {
   color: #61dafb;
-}
-
-h1 {
-  color: #333;
 }
 
 .BusinessList {

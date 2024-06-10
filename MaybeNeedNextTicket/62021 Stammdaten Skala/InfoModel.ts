@@ -115,8 +115,6 @@ export class InfoModel {
 	 * Liefert alle geänderten Werte zurück oder null, falls keine Änderungen vorhanden sind.
 	 */
 	getChangedValues() {
-		//const testModel = new SkalaModel(this.changedData);
-		//return testModel;
 		return this.changedData;
 	}
 
