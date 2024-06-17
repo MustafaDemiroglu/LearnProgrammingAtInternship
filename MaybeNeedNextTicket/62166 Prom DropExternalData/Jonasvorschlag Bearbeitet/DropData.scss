@@ -1,0 +1,89 @@
+.window.dropExternalDataWindow {
+	height: auto;
+	max-height: 250px;
+	width: 400px;
+	transform: scale(0.6);
+	transition: 0.3s;
+
+	.header {
+		width: 100%;
+		padding: 7px 8px 8px 8px;
+		font-size: 16px;
+		line-height: 20px;
+	}
+
+	.label {
+		width: 100px;
+		line-height: 20px;
+		margin-right: 5px;
+	}
+
+	.releaseGroup {
+		padding: 5px 10px;
+
+		.checkbox {
+			margin: 5px 5px 5px 0;
+		}
+	}
+
+	.textfield {
+		padding: 5px 10px;
+	}
+
+	.btnGroup {
+		display: flex;
+		justify-content: flex-end;
+		padding: 0 10px 10px 0;
+
+		.button {
+			margin: 2px;
+			align-content: center;
+		}
+	}
+
+	.arrow {
+		display: block;
+		position: absolute;
+		height: 20px;
+		width: 24px;
+		z-index: -1;
+		transform: rotate(29deg) skew(-35deg);
+		-moz-transform: rotate(29deg) skew(-35deg);
+		-ms-transform: rotate(29deg) skew(-35deg);
+		-webkit-transform: rotate(29deg) skew(-35deg);
+		background-color: white;
+	}
+
+	.arrow.topLeft {
+		top: 6px;
+		left: -9px;
+		box-shadow: -2px 2px 2px 0 #cecece;
+	}
+
+	.arrow.topRight {
+		top: 6px;
+		right: -9px;
+		box-shadow: 2px -2px 2px 0 #cecece;
+	}
+
+	.arrow.downLeft {
+		bottom: 6px;
+		left: -9px;
+		box-shadow: -2px 2px 2px 0 #cecece;
+	}
+
+	.arrow.downRight {
+		bottom: 6px;
+		right: -9px;
+		box-shadow: 2px -2px 2px 0 #cecece;
+	}
+
+	.warnMessage {
+		width: 100%;
+		padding: 5px;
+		font-size: 0.67rem;
+		line-height: 0.77rem;
+		color: #e95d0f;
+		text-align: center;
+	}
+}
