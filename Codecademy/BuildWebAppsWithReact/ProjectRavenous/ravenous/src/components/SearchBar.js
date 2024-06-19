@@ -1,71 +1,71 @@
-import React, {useState} from "react";
-import './SearchBar.css';
+import React, { useState, useCallback } from "react";
+import styles from "./SearchBar.module.css";
 
-const sortOptions = {
-    'Best Match': 'best_match',
-    'Highest Rated': 'rating',
-    'Most Reviewed': 'review_count'
-}
+const sortByOptions = {
+  "Best Match": "best_match",
+  "Highest Rated": "rating",
+  "Most Reviewed": "review_count",
+};
 
-const SearchBar = ({onSearch}) => {
-    const [term, setTerm] = useState ('');
-    const [location, setLocation] = useState('');
-    const [sortBy, setSortBy] = useState('best_match');
+const SearchBar = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [location, setLocation] = useState("");
+  const [selectedSortBy, setSelectedSortBy] = useState("best_match");
 
-    const handleSortByChange = (sortOption) => {
-        setSortBy(sortOption);
-    };
+  const handleSortByChange = useCallback((sortByOptionValue) => {
+    setSelectedSortBy(sortByOptionValue);
+  }, []);
 
-    const handleTermChange = (event) => {
-        setTerm(event.target.value);
-    };
+  const handleSearchTermChange = useCallback((event) => {
+    setSearchTerm(event.target.value);
+  }, []);
 
-    const handleLocationChange = (event) => {
-        setLocation(event.target.value);
-    };
+  const handleLocationChange = useCallback((event) => {
+    setLocation(event.target.value);
+  }, []);
 
-    const handleSearch = (event) => {
-        onSearch(term, location, sortBy);
-        event.preventDefault();
-    };
+  const handleSearch = useCallback((event) => {
+    event.preventDefault();
+    console.log(`Searching Yelp with ${searchTerm}, ${location}, ${selectedSortBy}`);
+  }, [searchTerm, location, selectedSortBy]);
 
-    const renderSortoptions = () => {
-        return Object.keys(sortOptions).map((option) => {
-            const value = sortOptions[option];
-            return (
-                <li
-                    key={value}
-                    className={sortBy === value ? 'active' : ''}
-                    onClick={() => handleSortByChange(value)}
-                >
-                    {option}
-                </li>
-            )
-        })
-    }
+  const renderSortByOptions = () => {
+    return Object.keys(sortByOptions).map((sortByOption) => {
+      let sortByOptionValue = sortByOptions[sortByOption];
+      return (
+        <li
+          key={sortByOptionValue}
+          className={selectedSortBy === sortByOptionValue ? styles.active : ""}
+          onClick={() => handleSortByChange(sortByOptionValue)}
+        >
+          {sortByOption}
+        </li>
+      );
+    });
+  };
 
-    return (
-        <div className="SearchBar">
-            <div className="SearchBar-sort-options">
-                <ul>{renderSortoptions()}</ul>
-            </div>
-            <div className="SearchBar-fields">
-                <input
-                    placeholder="Search Business"
-                    value={term}
-                    onChange={handleTermChange}
-                />
-                <input
-                    placeholder="Where?"
-                    value={location}
-                    onChange={handleLocationChange}
-                />
-            </div>
-            <div className="SearchBar-submit">
-                <button onClick={handleSearch}>Let's Go!</button>
-            </div>
-        </div>
-    );
+  return (
+    <div className={styles.SearchBar}>
+      <div className={styles.SearchBarSortOptions}>
+        <ul>{renderSortByOptions()}</ul>
+      </div>
+      <div className={styles.SearchBarFields}>
+        <input
+          placeholder="Search Businesses"
+          value={searchTerm}
+          onChange={handleSearchTermChange}
+        />
+        <input
+          placeholder="Where?"
+          value={location}
+          onChange={handleLocationChange}
+        />
+      </div>
+      <div className={styles.SearchBarSubmit}>
+        <button onClick={handleSearch}>Let's Go</button>
+      </div>
+    </div>
+  );
 };
 
 export default SearchBar;

@@ -10,15 +10,14 @@
     height: 25rem;
 }
 
-.SearchBar-sort-options {
+.SearchBarSortOptions {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-    margin-bottom: 2.0rem;
     color: #fff;
 }
 
-.SearchBar-sort-options ul {
+.SearchBarSortOptions ul {
     display: flex;
     list-style: none;
     padding: 0;
@@ -26,11 +25,10 @@
     margin-bottom: 2.45rem;
     color: #ffffff;
     align-content: center;
-    
 }
 
-.SearchBar-sort-options li {
-    cursor:pointer; 
+.SearchBarSortOptions li {
+    cursor: pointer; 
     width: 4.50rem;
     border-bottom: 1px solid #fff;
     padding: 0 2.58rem 0.33rem 2.58rem;
@@ -39,21 +37,27 @@
     align-items: center;
     font-weight: 600;
     font-size: 1.03rem;
-    transition: color 0.25s;
+    transition: color 0.25s, font-weight 0.25s;
     list-style: none;
 }
 
-.SearchBar-sort-options .active {
-    font-weight: bold;
+.SearchBarSortOptions li:hover {
+    color: #cca353;
 }
 
-.SearchBar-fields {
+.SearchBarSortOptions .active {
+    font-weight: bold;
+    color: #cca353;
+    border-bottom: 2px solid #cca353;
+}
+
+.SearchBarFields {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
 }
 
-.SearchBar-fields input {
+.SearchBarFields input {
     margin: 0 10px;
     padding: 10px;
     font-size: 16px;
@@ -62,12 +66,12 @@
     width: 200px;
 }
 
-.SearchBar-submit {
+.SearchBarSubmit {
     display: flex;
     justify-content: center;
 }
 
-.SearchBar-submit button {
+.SearchBarSubmit button {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
@@ -78,27 +82,27 @@
     transition: background-color 0.3s ease;
 }
 
-.SearchBar-submit button:hover {
-    background-color: #b3873e;;
+.SearchBarSubmit button:hover {
+    background-color: #b3873e;
 }
 
 @media only screen and (max-width: 560px) {
     .SearchBar {
-      background-image: url("./background_search_mobile.jpg");
+        background-image: url("./background_search_mobile.jpg");
     }
-  
+
     .SearchBarSortOptions ul {
-      margin-left: 2rem;
-      margin-right: 2rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
     }
-  
+
     .SearchBarFields {
-      flex-direction: column;
-      align-items: center;
+        flex-direction: column;
+        align-items: center;
     }
-  
+
     .SearchBarFields input {
-      margin-right: 0;
-      margin-bottom: 0.86rem;
+        margin-right: 0;
+        margin-bottom: 0.86rem;
     }
-  }
+}
