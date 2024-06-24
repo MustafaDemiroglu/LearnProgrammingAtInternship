@@ -1,0 +1,32 @@
+{
+    "formular": [
+      {
+        "id": 1,
+        "fileName": "Document1",
+        "txt": "Sample Text",
+        "freiTxt": "Free Text",
+        "unitName": "Unit1",
+        "fmtData": "Format Data",
+        "fileDate": "2024-06-24",
+        "datErst": "2024-06-23",
+        "userErst": "User1",
+        "datAend": "2024-06-24",
+        "userAend": "User1",
+        "datDel": null
+      }, 
+      {
+        "id": 2,
+        "fileName": "Document2",
+        "txt": "Sample Text",
+        "freiTxt": "Free Text",
+        "unitName": "Unit2",
+        "fmtData": "Format Data",
+        "fileDate": "2024-06-24",
+        "datErst": "2024-06-23",
+        "userErst": "User1",
+        "datAend": "2024-06-24",
+        "userAend": "User2",
+        "datDel": null
+      }
+    ]
+  }
