@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import styles from "./SearchBar.module.css";
+import styles from "./SearchBar.css";
 
 const sortByOptions = {
   "Best Match": "best_match",
