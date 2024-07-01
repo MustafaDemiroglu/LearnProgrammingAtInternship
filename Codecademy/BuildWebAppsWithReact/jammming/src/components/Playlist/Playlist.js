@@ -1,10 +1,22 @@
 import React, { useState } from 'react';
-import TrackList from '../TrackList/TrackList';
+import Tracklist from '../Tracklist/Tracklist'; // Adjust path as needed
 import './Playlist.css'; // Import Playlist component styles
 
 function Playlist({ initialName, initialTracks }) {
   const [playlistName, setPlaylistName] = useState(initialName);
   const [tracks, setTracks] = useState(initialTracks);
+
+  const addTrack = (track) => {
+    if (!tracks.some(existingTrack => existingTrack.id === track.id)) {
+      // Add the track to the playlist if it's not already there
+      setTracks([...tracks, track]);
+    }
+  };
+
+  const removeTrack = (track) => {
+    const updatedTracks = tracks.filter(existingTrack => existingTrack.id !== track.id);
+    setTracks(updatedTracks);
+  };
 
   const handleNameChange = (e) => {
     setPlaylistName(e.target.value);
@@ -17,10 +29,9 @@ function Playlist({ initialName, initialTracks }) {
         onChange={handleNameChange}
         placeholder="Enter playlist name"
       />
-      <TrackList tracks={tracks} />
+      <Tracklist tracks={tracks} onRemove={removeTrack} isRemoval={true} />
     </div>
   );
 }
 
 export default Playlist;
-
