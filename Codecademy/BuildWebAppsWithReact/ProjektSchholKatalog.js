@@ -7,6 +7,7 @@ class School {
       this._principalName = principalName;
     }
   
+    
     get name() {
       return this._name;
     }
