@@ -1,0 +1,22 @@
+.addUserRecordDialog {
+
+	width: 500px;
+
+
+	.header {
+		padding: 5px;
+		width: 100%;
+		font-size: 16px;
+		line-height: 20px;
+		background-color: var(--applicationColor);
+		color: white;
+	}
+
+	.fieldBox {
+		margin: 5px;
+	}
+
+	.textfield {
+		margin-left: 10px;
+	}
+}
