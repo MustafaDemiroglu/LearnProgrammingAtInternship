@@ -11,8 +11,6 @@ import { ModelData } from "./ModelData";
 
 export class AzmDayPage extends BasePage {
 	model!: AzmDayModel;
-	panel!: TogglePanel;
-	panelContainer: JQuery | null = null;
 	scrollContainer: JQuery<HTMLElement> | null = null;
 	selectedDayIndex = -1;
 	weekCount = 1;
@@ -23,10 +21,8 @@ export class AzmDayPage extends BasePage {
 	constructor(data: AzmDayModelData) {
 		super(PageKeys.AZMDAYPAGE);
 		this.addClass("azmDayPage flex1 flex");
-		//this.scrollContainer = this.createDiv("scrollContainer flex1");
-		this.panelContainer = this.createDiv("panelContainer flex1");
-		this.append(this.panelContainer);
-		//this.append(this.scrollContainer);
+		this.scrollContainer = this.createDiv("scrollContainer flex1");
+		this.append(this.scrollContainer);
 		this.load(data);
 	}
 
@@ -36,14 +32,11 @@ export class AzmDayPage extends BasePage {
 	}
 
 	update(): void {
-		//this.scrollContainer?.empty();
-		this.panelContainer?.empty();
+		this.scrollContainer?.empty();
 
 		const table = $("<table>").addClass("azmDayTable");
+		const thead = $("<thead>").appendTo(table);
 
-		const panelHeader = new TogglePanel("");
-		panelHeader.removeHeader();
-		const thead = $("<thead>");
 		const headerRow = $("<tr>").appendTo(thead);
 		$("<th>").text("Kategorien").appendTo(headerRow);
 		for (let week = 0; week < this.weekCount; week++) {
@@ -52,63 +45,16 @@ export class AzmDayPage extends BasePage {
 				th.on("click", () => this.selectDay(week * 7 + index));
 			});
 		}
-		panelHeader.setContent(thead);
+		
+		const tbody = $("<tbody>").appendTo(table);
+		
+        this.createSection(tbody,"Arbeitszeit", ["Arbeitszeit Von", "Arbeitszeit Bis"]);
+		this.createSection(tbody, "Pausenkorridore", ["Pause 1 Von", "Pause 1 Bis", "Min. Pausenzeit 1", "Pause 2 Von", "Pause 2 Bis", "Min Pausenzeit 2", "Pause 3 Von", "Pause 3 Bis", "Min Pausenzeit 3"]);
 
-
-		/*
-		const headerRow = $("<tr>").appendTo(thead);
-		$("<th>").text("Kategorien").appendTo(headerRow);
-		for (let week = 0; week < this.weekCount; week++) {
-			["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"].forEach((day, index) => {
-				const th = $("<th>").text(day).appendTo(headerRow);
-				th.on("click", () => this.selectDay(week * 7 + index));
-			});
-		}
-		*/
-
-		const tbody1 = $("<tbody>");
-		const panel1 = new TogglePanel("Arbeitszeit");
-		panel1.removeCount();
-		this.createSection(tbody1, ["Arbeitszeit Von", "Arbeitszeit Bis"]);
-		panel1.setContent(tbody1);
-
-		const tbody2 = $("<tbody>");
-		const panel2 = new TogglePanel("Pausenkorridore");
-		panel2.removeCount();
-		this.createSection(tbody2, ["Pause 1 Von", "Pause 1 Bis", "Min. Pausenzeit 1", "Pause 2 Von", "Pause 2 Bis", "Min Pausenzeit 2", "Pause 3 Von", "Pause 3 Bis", "Min Pausenzeit 3"]);
-		panel2.setContent(tbody2);
-
-		table.append([panelHeader.getEl(), panel1.getEl(), panel2.getEl()]);
-		//this.scrollContainer?.append(table);
-		this.panelContainer?.append(table);
+		this.scrollContainer?.append(table);
 	}
 
 
-
-	createSection(tbody: JQuery<HTMLElement>, fields: string[]): void {
-		fields.forEach(field => {
-			const fieldRow = $("<tr>").addClass("field-row");
-			$("<td>").text(field).appendTo(fieldRow);
-			this.model.data.forEach((day, dayIndex) => {
-				const cell = $("<td>").appendTo(fieldRow);
-				const input = this.createTimeInput(dayIndex, field);
-				//const input = new Hourfield();
-				//input.unitToValue(field, false);
-				//cell.append(input.getEl());
-				cell.append(input);
-				cell.on("click", (e) => {
-					e.stopPropagation();
-					this.selectDay(dayIndex);
-					this.selectInput(input);
-					//this.selectInput(input.getEl());
-				});
-			});
-			tbody.append(fieldRow);
-		});
-	}
-
-
-	/*
 	createSection(tbody: JQuery<HTMLElement>, title: string, fields: string[]): void {
 		const sectionRow = $("<tr>").addClass("section-row");
 		const titleCell = $("<td>").text(title).appendTo(sectionRow);
@@ -122,21 +68,16 @@ export class AzmDayPage extends BasePage {
 			this.model.data.forEach((day, dayIndex) => {
 				const cell = $("<td>").appendTo(fieldRow);
 				const input = this.createTimeInput(dayIndex, field);
-				//const input = new Hourfield();
-				//input.unitToValue(field, false);
-				//cell.append(input.getEl());
 				cell.append(input);
 				cell.on("click", (e) => {
 					e.stopPropagation();
 					this.selectDay(dayIndex);
 					this.selectInput(input);
-					//this.selectInput(input.getEl());
 				});
 			});
 			tbody.append(fieldRow);
 		});
 	}
-	*/
 
 	createTimeInput(dayIndex: number, field: string): JQuery {
 		const day = this.model.data[dayIndex];
